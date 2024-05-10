@@ -504,7 +504,7 @@
             keep_ratio: True
             size_hint: .10, .1
             pos_hint: {'top': 1, 'left': 1}
-            source: 'imgs/logo_supernova_branca.png'
+            source: 'imgs/new_logo.png'
         Button:
             id: imagem_conexao
             background_normal: 'imgs/desconectado.png'
@@ -532,25 +532,15 @@
                 valign: 'center'
                 halign: 'center'
                 font_size: self.parent.width/50
-            BoxLayout:
-                orientation: 'vertical'
-                Label:
-                    id: eletronica
-                    text: 'SETOR ELETRÔNICA'
-                    bold: True
-                    text_size: self.size
-                    valign: 'center'
-                    halign: 'center'
-                    font_size: self.parent.width/35
-                Label:
-                    id: data
-                    text: '29/05/2021'
-                    bold: True
-                    text_size: self.size
-                    valign: 'center'
-                    halign: 'center'
-                    font_size: self.parent.width/35
-
+        
+            Label:
+                id: eletronica
+                text: 'Aviônica'
+                bold: True
+                text_size: self.size
+                valign: 'center'
+                halign: 'center'
+                font_size: self.parent.width/60
         # ------------------------------------------------------------------------------------------------------------
         # --------------------------------------- Dados foguete (ABA LATERAL) ----------------------------------------
         # ------------------------------------------------------------------------------------------------------------
