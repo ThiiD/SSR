@@ -270,6 +270,27 @@
             Rectangle:
                 pos: int(self.parent.width)*.02, int(self.parent.height)*0.04
                 size: int(self.parent.width)*.07,  int(self.parent.height)*0.09
+
+            # ---------- Voltage
+            Color:
+                rgb: .5, .5, .5
+            Line:
+                points: int(self.parent.width)*.1, int(self.parent.height)*0.04, int(self.parent.width)*.17, int(self.parent.height)*0.04
+                width: 2
+            Line:
+                points: int(self.parent.width)*.1, int(self.parent.height)*0.13, int(self.parent.width)*.17, int(self.parent.height)*0.13
+                width: 2
+            Line:
+                points: int(self.parent.width)*.1, int(self.parent.height)*0.04, int(self.parent.width)*.1, int(self.parent.height)*0.13
+                width: 2
+            Line:
+                points: int(self.parent.width)*.17, int(self.parent.height)*0.04, int(self.parent.width)*.17, int(self.parent.height)*0.13
+                width: 2
+            Color:
+                rgb: .7, .7, .7
+            Rectangle:
+                pos: int(self.parent.width)*.1, int(self.parent.height)*0.04
+                size: int(self.parent.width)*.07,  int(self.parent.height)*0.09
             # Line:
             #     points: int(self.parent.width)*0.01, int(self.parent.height)*0.18, int(self.parent.width)*0.26, int(self.parent.height)*0.18
             #     width: 2
@@ -525,14 +546,14 @@
             pos_hint: {'top': 1, 'x': .2 }
             Label:
                 id: supervisorio
-                text: 'SUPERVISORY - SUPERNOVA'
+                text: 'MACH ONE SUPERVISORY'
                 #size_font: 32
                 bold: True
                 text_size: self.size
                 valign: 'center'
                 halign: 'center'
                 font_size: self.parent.width/50
-        
+                font_name: 'fontes/montserrat/Montserrat-Regular.ttf'
             Label:
                 id: eletronica
                 text: 'Avionics'
@@ -541,6 +562,7 @@
                 valign: 'center'
                 halign: 'center'
                 font_size: self.parent.width/60
+                font_name: 'fontes/montserrat/Montserrat-Regular.ttf'
         # ------------------------------------------------------------------------------------------------------------
         # --------------------------------------- Dados foguete (ABA LATERAL) ----------------------------------------
         # ------------------------------------------------------------------------------------------------------------
@@ -712,7 +734,19 @@
 
 
 
-
+        # ------------------------- Voltage ------------------------------
+        BoxLayout:
+            orientation: 'vertical'
+            pos_hint: {'x': .10, 'y': .14} 
+            size_hint: (.07, .03)
+            Label:
+                text: 'Voltage'
+                text_size: self.size
+                valign: 'center'
+                halign: 'left'
+                font_size: self.parent.width/5.6
+                font_name: 'fontes/montserrat/Montserrat-Regular.ttf'
+                color: 0, 0, 0, 1
 
         # ------------------------- RSSI ------------------------------
         BoxLayout:
@@ -889,12 +923,13 @@
             size_hint: (.25, .06)
             Label:
                 text: 'Data Received'
-                font_name: 'fontes/montserrat/Montserrat-SemiBold.ttf'
+                font_name: 'fontes/montserrat/Montserrat-Regular.ttf'
                 text_size: self.size
                 valign: 'center'
                 halign: 'center'
                 font_size: self.parent.width/14
                 color: 0, 0, 0, 1
+                bold: True
 
         # ------------------------------------------------------------------------------------------------------------
         # ------------------------------------------ PARTE BOOLEANA --------------------------------------------------
@@ -909,9 +944,10 @@
                     text: 'Drogue Parachute'
                     color: 0, 0, 0, 1
                     bold: True
-                    font_size: self.parent.width/20
-                    font_name: 'fontes/montserrat/Montserrat-SemiBold.ttf'
-                    haling: 'center'
+                    font_size: self.parent.width/15
+                    font_name: 'fontes/montserrat/Montserrat-Regular.ttf'
+                    # haling: 'center'
+                    bold: True
                 BoxLayout:
                     orientation:'horizontal'
                     BoxLayout:
@@ -919,7 +955,7 @@
                         Label:
                             text: 'Main'
                             valign: 'top'
-                            font_size: self.parent.width/8
+                            font_size: 18
                             font_name: 'fontes/montserrat/Montserrat-Regular.ttf'
                             color: 0, 0, 0, 1
                         AsyncImage:
@@ -930,30 +966,31 @@
                         Label:
                             text: 'Redundant'
                             valign: 'top'
-                            font_size: self.parent.width/8
+                            font_size: 18
                             font_name: 'fontes/montserrat/Montserrat-Regular.ttf'
                             color: 0, 0, 0, 1
                         AsyncImage:
                             id: paraquedasEstabilizadorRedundante
                             source: 'imgs/red_led.png'
-                    BoxLayout:
-                        orientation:'vertical'
-                        Label:
-                            text: 'Commercial'
-                            valign: 'top'
-                            font_size: self.parent.width/8
-                            font_name: 'fontes/montserrat/Montserrat-Regular.ttf'
-                            color: 0, 0, 0, 1
-                        AsyncImage:
-                            id: paraquedasEstabilizadorComercial
-                            source: 'imgs/red_led.png'  
+                    # BoxLayout:
+                    #     orientation:'vertical'
+                    #     Label:
+                    #         text: 'Commercial'
+                    #         valign: 'top'
+                    #         font_size: self.parent.width/8
+                    #         font_name: 'fontes/montserrat/Montserrat-Regular.ttf'
+                    #         color: 0, 0, 0, 1
+                    #     AsyncImage:
+                    #         id: paraquedasEstabilizadorComercial
+                    #         source: 'imgs/red_led.png'  
             BoxLayout:
                 orientation:'vertical'      
                 Label:
                     text: 'Main Parachute'
                     bold: True
-                    font_size: self.parent.width/20
-                    font_name: 'fontes/montserrat/Montserrat-SemiBold.ttf'
+                    font_size: self.parent.width/15
+                    font_name: 'fontes/montserrat/Montserrat-Regular.ttf'
+                    bold: True
                     color: 0, 0, 0, 1
                 BoxLayout:
                     orientation:'horizontal'
@@ -962,78 +999,89 @@
                         Label:
                             text: 'Main'
                             valign: 'top'
-                            font_size: self.parent.width/12
+                            font_size: 18
                             font_name: 'fontes/montserrat/Montserrat-Regular.ttf'
                             color: 0, 0, 0, 1
                         AsyncImage:
                             id: paraquedasPrincipal
                             source: 'imgs/red_led.png'
-                    BoxLayout:
-                        orientation:'vertical'
-                        Label:
-                            text: 'Commercial'
-                            valign: 'top'
-                            font_size: self.parent.width/12
-                            font_name: 'fontes/montserrat/Montserrat-Regular.ttf'
-                            color: 0, 0, 0, 1
-                        AsyncImage:
-                            id: paraquedasPrincipalComercial
-                            source: 'imgs/red_led.png'
+                    # BoxLayout:
+                    #     orientation:'vertical'
+                    #     Label:
+                    #         text: 'Commercial'
+                    #         valign: 'top'
+                    #         font_size: self.parent.width/12
+                    #         font_name: 'fontes/montserrat/Montserrat-Regular.ttf'
+                    #         color: 0, 0, 0, 1
+                    #     AsyncImage:
+                    #         id: paraquedasPrincipalComercial
+                    #         source: 'imgs/red_led.png'
             BoxLayout:
                 orientation:'vertical'
                 Label:
-                    text: 'Remove Before Flight (1/2/3)'
+                    text: 'Ready'
                     color: 0, 0, 0, 1
-                    font_size: self.parent.width/20
-                    font_name: 'fontes/montserrat/Montserrat-SemiBold.ttf'
+                    font_size: self.parent.width/15
+                    font_name: 'fontes/montserrat/Montserrat-Regular.ttf'
                     bold: True
                 BoxLayout:
-                    orientation:'horizontal'
-                    BoxLayout:
-                        orientation:'vertical'
-                        # Label:
-                        #     text: '1º'
-                        #     valign: 'top'
-                        #     font_size: self.parent.width/8
-                        #     font_name: 'fontes/montserrat/Montserrat-Regular.ttf'
-                        #     color: 0, 0, 0, 1
-                        AsyncImage:
-                            id: rbf1_led
-                            source: 'imgs/red_led.png'
-                        Switch:
-                            id: rbf1_switch
-                            on_active: root.rbf1Activate(self, self.active)
-                            disabled: True
-                    BoxLayout:
-                        orientation:'vertical'
-                        # Label:
-                        #     text: '2º'
-                        #     valign: 'top'
-                        #     font_size: self.parent.width/8
-                        #     font_name: 'fontes/montserrat/Montserrat-Regular.ttf'
-                        #     color: 0, 0, 0, 1
-                        AsyncImage:
-                            id: rbf2_led
-                            source: 'imgs/red_led.png'
-                        Switch:
-                            id: rbf2_switch
-                            on_active: root.rbf2Activate(self, self.active)
-                            disabled: True
-                    BoxLayout:
-                        orientation:'vertical'
-                        # Label:
-                        #     text: '3º'
-                        #     valign: 'top'
-                        #     font_size: self.parent.width/8
-                        #     font_name: 'fontes/montserrat/Montserrat-Regular.ttf'
-                        #     color: 0, 0, 0, 1
-                        AsyncImage:
-                            id: rbf3_led
-                            source: 'imgs/red_led.png'
-                        Switch:
-                            id: rbf3_switch
-                            on_active: root.rbf3Activate(self, self.active)
-                            disabled: True 
+                    orientation:'vertical'
+                    Label:
+                        text: ''
+                        valign: 'top'
+                        font_size: self.parent.width/12
+                        font_name: 'fontes/montserrat/Montserrat-Regular.ttf'
+                        color: 0, 0, 0, 1
+                    AsyncImage:
+                        id: ready_led
+                        source: 'imgs/red_led.png'
+                # BoxLayout:
+                #     orientation:'horizontal'
+                #     BoxLayout:
+                #         orientation:'vertical'
+                #         # Label:
+                #         #     text: '1º'
+                #         #     valign: 'top'
+                #         #     font_size: self.parent.width/8
+                #         #     font_name: 'fontes/montserrat/Montserrat-Regular.ttf'
+                #         #     color: 0, 0, 0, 1
+                #         AsyncImage:
+                #             id: rbf1_led
+                #             source: 'imgs/red_led.png'
+                #         Switch:
+                #             id: rbf1_switch
+                #             on_active: root.rbf1Activate(self, self.active)
+                #             disabled: True
+                #     BoxLayout:
+                #         orientation:'vertical'
+                #         # Label:
+                #         #     text: '2º'
+                #         #     valign: 'top'
+                #         #     font_size: self.parent.width/8
+                #         #     font_name: 'fontes/montserrat/Montserrat-Regular.ttf'
+                #         #     color: 0, 0, 0, 1
+                #         AsyncImage:
+                #             id: rbf2_led
+                #             source: 'imgs/red_led.png'
+                #         Switch:
+                #             id: rbf2_switch
+                #             on_active: root.rbf2Activate(self, self.active)
+                #             disabled: True
+                #     BoxLayout:
+                #         orientation:'vertical'
+                #         # Label:
+                #         #     text: '3º'
+                #         #     valign: 'top'
+                #         #     font_size: self.parent.width/8
+                #         #     font_name: 'fontes/montserrat/Montserrat-Regular.ttf'
+                #         #     color: 0, 0, 0, 1
+                #         AsyncImage:
+                #             id: rbf3_led
+                #             source: 'imgs/red_led.png'
+                #         Switch:
+                #             id: rbf3_switch
+                #             on_active: root.rbf3Activate(self, self.active)
+                #             disabled: True 
 
             BoxLayout:
                 orientation: 'vertical'
@@ -1041,8 +1089,9 @@
                     text: 'Database'
                     color: 0, 0, 0, 1
                     bold: True
-                    font_size: self.parent.width/20
-                    font_name: 'fontes/montserrat/Montserrat-SemiBold.ttf'
+                    font_size: self.parent.width/15
+                    font_name: 'fontes/montserrat/Montserrat-Regular.ttf'
+                    bold: True
                     haling: 'center'
                 BoxLayout:
                     orientation:'horizontal'
@@ -1380,6 +1429,20 @@
         pos_hint: {'x' : .02, 'y' : 0.04}
         Label:
             id: RSSI
+            text: '-.-'
+            text_size: self.size
+            font_size: altitude.font_size
+            valign: 'middle'
+            halign: 'center'
+            font_name: 'fontes/montserrat/Montserrat-Regular.ttf'
+            color: 0, 0, 0, 1
+
+    BoxLayout:
+        orientation: 'vertical'
+        size_hint: .07, 0.09
+        pos_hint: {'x' : .10, 'y' : 0.04}
+        Label:
+            id: voltage
             text: '-.-'
             text_size: self.size
             font_size: altitude.font_size

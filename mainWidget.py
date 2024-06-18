@@ -151,6 +151,7 @@ class MainWidget(FloatLayout):
         self.ids.giroscopioY.text = str(int(self._instDados['Gyro(y)']))
         self.ids.giroscopioZ.text = str(int(self._instDados['Gyro(z)']))
         self.ids.RSSI.text = str(self._instDados['RSSI'])
+        self.ids.voltage.text = str(self._instDados['Voltage'])
         self.ids.mapa.lat = self._instDados['Lat']
         self.ids.mapa.lon = self._instDados['Long']
         self.ids.mapaMarker.lat = self._instDados['Lat']
@@ -247,14 +248,11 @@ class MainWidget(FloatLayout):
         if self._instDados['Redundancia Paraquedas Estabilizador'] == 1:
             self.ids.paraquedasEstabilizadorRedundante.source = 'imgs/green_led.png'
 
-        if self._instDados['Comercial Paraquedas Estabilizador'] == 1:
-            self.ids.paraquedasEstabilizadorComercial.source = 'imgs/green_led.png'
-
         if self._instDados['PPP'] == 1:
             self.ids.paraquedasPrincipal.source = 'imgs/green_led.png'
 
-        if self._instDados['Comercial Paraquedas Principal'] == 1:
-            self.ids.paraquedasPrincipalComercial.source = 'imgs/green_led.png'
+        if self._instDados['ready'] == 1:
+            self.ids.ready_led.source = 'imgs/green_led.png'
 
 
 
@@ -263,9 +261,6 @@ class MainWidget(FloatLayout):
         """
         Método para habilitar os switches após a conexão.
         """
-        self.ids.rbf1_switch.disabled = False
-        self.ids.rbf2_switch.disabled = False
-        self.ids.rbf3_switch.disabled = False
         self.ids.bd_switch.disabled = False
         self.ids.bttnMarkBase.disabled = False
 
@@ -288,32 +283,6 @@ class MainWidget(FloatLayout):
 
         self._updateDB = switchValue
 
-    def rbf1Activate(self, switchObject, switchValue):
-        """
-        Método para demonstração do estado do Remove Before Light 1 (LED 1 ON/OFF)
-        """
-        if switchValue:
-            self.ids.rbf1_led.source = 'imgs/green_led.png'
-        else:
-            self.ids.rbf1_led.source = 'imgs/red_led.png'
-
-    def rbf2Activate(self, switchObject, switchValue):
-        """
-        Método para demonstração do estado do Remove Before Light 2 (LED 2 ON/OFF)
-        """
-        if switchValue:
-            self.ids.rbf2_led.source = 'imgs/green_led.png'
-        else:
-            self.ids.rbf2_led.source = 'imgs/red_led.png'
-
-    def rbf3Activate(self, switchObject, switchValue):
-        """
-        Método para demonstração do estado do Remove Before Light 3 (LED 3 ON/OFF)
-        """
-        if switchValue:
-            self.ids.rbf3_led.source = 'imgs/green_led.png'
-        else:
-            self.ids.rbf3_led.source = 'imgs/red_led.png'
 
     def _markBase(self):
         """
@@ -369,16 +338,8 @@ class MainWidget(FloatLayout):
         self.ids.mapa.do_update(1)
         self.ids.paraquedasEstabilizadorPrincipal.source = 'imgs/red_led.png'
         self.ids.paraquedasEstabilizadorRedundante.source = 'imgs/red_led.png'
-        self.ids.paraquedasEstabilizadorComercial.source = 'imgs/red_led.png'
         self.ids.paraquedasPrincipal.source = 'imgs/red_led.png'
-        self.ids.paraquedasPrincipalComercial.source = 'imgs/red_led.png'
-        self.ids.rbf1_switch.active = False
-        self.ids.rbf2_switch.active = False
-        self.ids.rbf3_switch.active = False
         self.ids.bd_switch.active = False
-        self.ids.rbf1_switch.disabled = True
-        self.ids.rbf2_switch.disabled = True
-        self.ids.rbf3_switch.disabled = True
         self.ids.bd_switch.disabled = True
         self.ids.bttnMarkBase.disabled = True
         self.ids.escala.source = 'imgs/escalaZerada.png'

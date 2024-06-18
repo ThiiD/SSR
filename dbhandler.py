@@ -18,15 +18,14 @@ class DBHandler():
                         "Longitude", 
                         "Principal_Paraquedas_Estabilizador",
                         "Redundancia_Paraquedas_Estabilizador",
-                        "Comercial_Paraquedas_Estabilizador",
                         "Principal_Paraquedas_Principal",
-                        "Comercial_Paraquedas_Principal",
                         "Acelerometro_X",
                         "Acelerometro_Y",
                         "Acelerometro_Z",
                         "Giroscopio_Roll",
                         "Giroscopio_Pitch",
                         "Giroscopio_Yaw",
+                        "Tensão",
                         "RSSI"
         ]
         
@@ -97,15 +96,14 @@ class DBHandler():
                         "Longitude" : data['Long'], 
                         "Principal_Paraquedas_Estabilizador" : data['PPE'],
                         "Redundancia_Paraquedas_Estabilizador" : data['Redundancia Paraquedas Estabilizador'],
-                        "Comercial_Paraquedas_Estabilizador" : data['Comercial Paraquedas Estabilizador'],
                         "Principal_Paraquedas_Principal" : data['PPP'],
-                        "Comercial_Paraquedas_Principal" : data['Comercial Paraquedas Principal'],
                         "Acelerometro_X" : data['Acel(x)'],
                         "Acelerometro_Y" : data['Acel(y)'],
                         "Acelerometro_Z" : data['Acel(z)'],
                         "Giroscopio_Roll"   : data['Gyro(x)'],
                         "Giroscopio_Pitch"  : data['Gyro(y)'],
                         "Giroscopio_Yaw"    : data['Gyro(z)'],
+                        "Tensão"            : data['Voltage'],
                         "RSSI" : data['RSSI']}
         
             return newData
